@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c07a7fdc230d0fd4082f251652f66929
+guid: 63c5950d8e9e227489632df3d5f5c795
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
@@ -12,12 +12,6 @@ ModelImporter:
   - first:
       74: 1303299601406483602
     second: Armature|run
-  - first:
-      74: -236022367644965580
-    second: Armature|Idle (1)
-  - first:
-      74: -8123005107007431860
-    second: Armature|run (1)
   externalObjects: {}
   materials:
     materialImportMode: 0
@@ -58,7 +52,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -196,7 +190,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
