@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(MoveLogic))]
 public class PlayerController : NetworkBehaviour
@@ -9,8 +10,19 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private float speed = 2.5f;
     [SerializeField] private float sensitivity = 3f;
 
+    public Camera playerCam;
+    [SerializeField] private Transform camRefePos;
+
+
     private MoveLogic moveLogic;
     private Animator playerAnimator;
+
+
+    private void Awake()
+    {
+        playerCam = new Camera();
+        playerCam = camRefePos.gameObject.AddComponent(typeof(Camera)) as Camera;
+    }
 
     private void Start()
     {
@@ -22,6 +34,12 @@ public class PlayerController : NetworkBehaviour
     private void Update()
     {
         HandleMovement();
+
+        //if (isLocalPlayer)
+        //{
+        //    playerCam.enabled = false;
+        //    return;
+        //}
     }
 
     private void HandleMovement()
@@ -75,6 +93,27 @@ public class PlayerController : NetworkBehaviour
         else
         {
             playerAnimator.SetInteger("Run", 0);
+        }
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        if (playerCam != null)
+        {
+            playerCam.orthographic = false;
+            playerCam.transform.SetParent(camRefePos);
+        }
+    }
+
+    public override void OnStopClient()
+    {
+        if (isLocalPlayer && playerCam != null)
+        {
+            playerCam.transform.SetParent(null);
+            SceneManager.MoveGameObjectToScene(playerCam.gameObject, SceneManager.GetActiveScene());
+            playerCam.orthographic = true;
+            playerCam.transform.localPosition = new Vector3(0f, 70f, 0f);
+            playerCam.transform.localEulerAngles = new Vector3(90f, 0f, 0f);
         }
     }
 }

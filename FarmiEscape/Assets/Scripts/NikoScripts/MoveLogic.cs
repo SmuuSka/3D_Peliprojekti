@@ -7,6 +7,7 @@ public class MoveLogic : MonoBehaviour
 {
     [SerializeField] Camera cam;
 
+
     private Vector3 velocity = Vector3.zero;
     private Vector3 rotation = Vector3.zero;
     private Vector3 cameraRotation = Vector3.zero;
@@ -16,6 +17,7 @@ public class MoveLogic : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        cam = GetComponent<PlayerController>().playerCam;
     }
 
     public void Move(Vector3 _velocity)
