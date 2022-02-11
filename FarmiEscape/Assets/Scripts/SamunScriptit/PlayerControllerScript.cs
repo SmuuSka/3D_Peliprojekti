@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMotor))]
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(PlayerLogicScript))]
+public class PlayerControllerScript : MonoBehaviour
 {
     [SerializeField]
     private float speed = 2.5f;
     [SerializeField]
     private float sensitivity = 3f;
 
-    private PlayerMotor motor;
+    private PlayerLogicScript motor;
     private Animator playerAnimator;
     
 
     private void Start()
     {
-        motor = GetComponent<PlayerMotor>();
+        motor = GetComponent<PlayerLogicScript>();
         playerAnimator = GetComponent<Animator>();
     }
 
@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Velocity: " + _velocity);
 
         motor.Move(_velocity);
-        Run(_velocity);
+
+
 
         float _yRot = Input.GetAxisRaw("Mouse X");
 
@@ -47,6 +48,17 @@ public class PlayerController : MonoBehaviour
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
 
         motor.RotateCamera(_cameraRotation);
+
+
+
+
+
+
+
+
+
+        Run(_velocity);
+
     }
 
     private void Run(Vector3 _playerVelocity)
