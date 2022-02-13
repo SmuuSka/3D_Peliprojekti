@@ -57,7 +57,7 @@ public class PlayerController : NetworkBehaviour
         // Tähän muuttujaan tallennetaan x ja z akselien liike ja niiden summa normalisoidaan ja siihen lisätään liike kertomalla nopeus
         Vector3 _velocity = (_movHorizontal + _movVertical).normalized * speed;
 
-        Debug.Log($"Velocity: {_velocity}");
+        //Debug.Log($"Velocity: {_velocity}");
 
         // Tässä käyttäjän syöte lähetetään koneelle fysiikan laskentaan
         moveLogic.Move(_velocity);
