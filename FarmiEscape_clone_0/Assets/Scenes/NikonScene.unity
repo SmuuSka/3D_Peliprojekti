@@ -284,8 +284,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 753626257}
-  - component: {fileID: 753626256}
   - component: {fileID: 753626255}
+  - component: {fileID: 753626256}
   - component: {fileID: 753626254}
   m_Layer: 0
   m_Name: NetworkManager
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 753626253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2335792826c909e4bb2c749a0d32add9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
@@ -357,12 +357,13 @@ MonoBehaviour:
   onlineScene: 
   transport: {fileID: 753626255}
   networkAddress: localhost
-  maxConnections: 10
+  maxConnections: 100
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 5768811678176738070, guid: 44e5cf224abe2ef4a837c039b1eaeebf, type: 3}
+  playerPrefab: {fileID: 7059420542040327809, guid: 6eeaf0aa0af86f545b0027de7b22c5b7, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 9009041092725256586, guid: 52b4c7c155dc208458e924da5bf6af20, type: 3}
 --- !u!4 &753626257
 Transform:
   m_ObjectHideFlags: 0
