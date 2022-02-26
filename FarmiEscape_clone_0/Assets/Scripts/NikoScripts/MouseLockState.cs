@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class MouseBoundaries : MonoBehaviour
+public class MouseLockState : MonoBehaviour
 {
 
 
