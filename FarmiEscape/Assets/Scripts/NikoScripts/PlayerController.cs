@@ -7,20 +7,15 @@ public class PlayerController : NetworkBehaviour
 {
     [SerializeField] private float speed = 2.5f;
     [SerializeField] private float sensitivity = 3f;
+    [SerializeField] private float smoothTime = 0.3f;
 
-    //public Camera playerCam;
-    //[SerializeField] private Transform camRefePos;
 
+    public Vector3 target;
+    public Vector3 start;
+    private Vector3 velocity = Vector3.zero;
 
     private MoveLogic moveLogic;
     private Animator playerAnimator;
-
-
-    //private void Awake()
-    //{
-    //    playerCam = new Camera();
-    //    playerCam = camRefePos.gameObject.AddComponent(typeof(Camera)) as Camera;
-    //}
 
     private void Start()
     {
@@ -34,14 +29,7 @@ public class PlayerController : NetworkBehaviour
         if (hasAuthority)
         {
             HandleMovement();
-        }
-        
-
-        //if (isLocalPlayer)
-        //{
-        //    playerCam.enabled = false;
-        //    return;
-        //}
+        }        
     }
 
     private void HandleMovement()
@@ -73,7 +61,10 @@ public class PlayerController : NetworkBehaviour
         moveLogic.Rotate(_rotation);
 
         // Tähän muuttujaan tallennetaan käyttäjän x syöte ja lisätään liike kertomalla hiiren nopeus
+        start = new Vector3(_xRot, 0f, 0f);
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
+        target = _cameraRotation;
+        _cameraRotation = Vector3.SmoothDamp(start, target, ref velocity, smoothTime);
 
         // Tässä käyttäjän syöte lähetetään koneelle fysiikan laskentaan
         moveLogic.RotateCamera(_cameraRotation);
@@ -96,24 +87,4 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    //public override void OnStartLocalPlayer()
-    //{
-    //    if (playerCam != null)
-    //    {
-    //        playerCam.orthographic = false;
-    //        playerCam.transform.SetParent(camRefePos);
-    //    }
-    //}
-
-    //public override void OnStopClient()
-    //{
-    //    if (isLocalPlayer && playerCam != null)
-    //    {
-    //        playerCam.transform.SetParent(null);
-    //        SceneManager.MoveGameObjectToScene(playerCam.gameObject, SceneManager.GetActiveScene());
-    //        playerCam.orthographic = true;
-    //        playerCam.transform.localPosition = new Vector3(0f, 70f, 0f);
-    //        playerCam.transform.localEulerAngles = new Vector3(90f, 0f, 0f);
-    //    }
-    //}
 }
