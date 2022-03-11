@@ -8,19 +8,10 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private float speed = 2.5f;
     [SerializeField] private float sensitivity = 3f;
 
-    //public Camera playerCam;
-    //[SerializeField] private Transform camRefePos;
-
-
     private MoveLogic moveLogic;
     private Animator playerAnimator;
 
-
-    //private void Awake()
-    //{
-    //    playerCam = new Camera();
-    //    playerCam = camRefePos.gameObject.AddComponent(typeof(Camera)) as Camera;
-    //}
+    private float cameraPitch;
 
     private void Start()
     {
@@ -35,13 +26,6 @@ public class PlayerController : NetworkBehaviour
         {
             HandleMovement();
         }
-        
-
-        //if (isLocalPlayer)
-        //{
-        //    playerCam.enabled = false;
-        //    return;
-        //}
     }
 
     private void HandleMovement()
@@ -66,16 +50,19 @@ public class PlayerController : NetworkBehaviour
         float _yRot = Input.GetAxisRaw("Mouse X");
         float _xRot = Input.GetAxisRaw("Mouse Y");
 
+        //Vector2 mousedelta = new Vector2(_xRot, _yRot);
+        //cameraPitch = mousedelta.y;
+        //cameraPitch = Mathf.Clamp(cameraPitch, -90.0f, 90.0f);
+
         // Tähän muuttujaan tallennetaan käyttäjän y syöte ja lisätään liike kertomalla hiiren nopeus
         Vector3 _rotation = new Vector3(0f, _yRot, 0f) * sensitivity;
 
         // Tässä käyttäjän syöte lähetetään koneelle fysiikan laskentaan
         moveLogic.Rotate(_rotation);
-
         // Tähän muuttujaan tallennetaan käyttäjän x syöte ja lisätään liike kertomalla hiiren nopeus
         Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * sensitivity;
 
-        // Tässä käyttäjän syöte lähetetään koneelle fysiikan laskentaan
+        // Tässä käyttäjän syöte lähetetään koneelle laskentaan
         moveLogic.RotateCamera(_cameraRotation);
 
         // Pyöritetään animaatiota aina kun käyttäjä lähettää koneelle liikkumis syötettä
@@ -95,25 +82,4 @@ public class PlayerController : NetworkBehaviour
             playerAnimator.SetInteger("Run", 0);
         }
     }
-
-    //public override void OnStartLocalPlayer()
-    //{
-    //    if (playerCam != null)
-    //    {
-    //        playerCam.orthographic = false;
-    //        playerCam.transform.SetParent(camRefePos);
-    //    }
-    //}
-
-    //public override void OnStopClient()
-    //{
-    //    if (isLocalPlayer && playerCam != null)
-    //    {
-    //        playerCam.transform.SetParent(null);
-    //        SceneManager.MoveGameObjectToScene(playerCam.gameObject, SceneManager.GetActiveScene());
-    //        playerCam.orthographic = true;
-    //        playerCam.transform.localPosition = new Vector3(0f, 70f, 0f);
-    //        playerCam.transform.localEulerAngles = new Vector3(90f, 0f, 0f);
-    //    }
-    //}
 }

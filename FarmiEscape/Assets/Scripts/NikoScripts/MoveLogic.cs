@@ -17,7 +17,6 @@ public class MoveLogic : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        //cam = GetComponent<PlayerController>().playerCam;
     }
 
     public void Move(Vector3 _velocity)
@@ -57,6 +56,5 @@ public class MoveLogic : MonoBehaviour
         PerformMovement();
         PerformRotation();
     }
-
 
 }

@@ -13,6 +13,8 @@ namespace Mirror
     {
         NetworkManager manager;
 
+
+        public static bool setMouseLock = false;
         public int offsetX;
         public int offsetY;
 
@@ -61,6 +63,7 @@ namespace Mirror
                     if (GUILayout.Button("Host (Server + Client)"))
                     {
                         manager.StartHost();
+                        setMouseLock = true;
                     }
                 }
 
@@ -69,6 +72,7 @@ namespace Mirror
                 if (GUILayout.Button("Client"))
                 {
                     manager.StartClient();
+                    setMouseLock = true;
                 }
                 // This updates networkAddress every frame from the TextField
                 manager.networkAddress = GUILayout.TextField(manager.networkAddress);
