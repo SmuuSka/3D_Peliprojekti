@@ -12,11 +12,14 @@ public class ClientInstance : NetworkBehaviour
 
     public void InvokeCharacterSpawned(GameObject gameObject)
     {
+        _currentCharacter = gameObject;
         OnOwnerCharacterSpawned?.Invoke(gameObject);
     }
 
     [Tooltip("Prefab for the player")]
     [SerializeField] private NetworkIdentity _playerPrefab = null;
+
+    private GameObject _currentCharacter = null;
 
 
     [Command]
@@ -56,5 +59,12 @@ public class ClientInstance : NetworkBehaviour
         {
             return Instance;
         }
+    }
+
+    public void SetPlayerName(string name)
+    {
+        if (_currentCharacter == null) return;
+
+        PlayerName playerName = _currentCharacter.GetComponent<PlayerName>();
     }
 }
