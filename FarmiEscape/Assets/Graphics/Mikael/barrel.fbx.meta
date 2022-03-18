@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 891ab7a092b388143ba011565f323f63
+guid: ba8ba1f7a87c7a448a4c94a7b45626e9
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: metal.001
+    second: {fileID: 2100000, guid: 2c2854656be93824798d9de837f42cf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: puu
-    second: {fileID: 2100000, guid: 07a5d9dae4304f04990184f76f22ed5a, type: 2}
+    second: {fileID: 2100000, guid: be26bee86db6f314aa2128cb0f80a5a0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
