@@ -118,6 +118,10 @@ public class MoveUserInput : MonoBehaviour
         if (_playerVelocity.z != 0)
         {
             playerAnimator.SetInteger("Run", 1);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                playerAnimator.SetTrigger("RunJump");
+            }
         }
         else
         {
