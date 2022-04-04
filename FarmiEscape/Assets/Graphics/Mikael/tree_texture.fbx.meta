@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 675a7e2bf8e6c444d9ef983f99ae4f65
+guid: 8c456049260179a44b1de7f57b23e13e
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lehti
+    second: {fileID: 2100000, guid: a1e4cdaa997d99242843e77e9b16404f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: textures
+    second: {fileID: 2100000, guid: d139a8547f9625d47aee5408a068483c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
