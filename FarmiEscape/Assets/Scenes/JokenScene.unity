@@ -19006,6 +19006,7 @@ GameObject:
   - component: {fileID: 8180408054413176834}
   - component: {fileID: 8180408054413176833}
   - component: {fileID: 8180408054413176832}
+  - component: {fileID: 8180408054413176836}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -19053,7 +19054,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8180408054413176830}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35b660d3aff52ae4ea3c9feae42cb60d, type: 3}
   m_Name: 
@@ -19090,6 +19091,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8180408054413176836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180408054413176830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f9924d2c760a842bffb30ee2d5b58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 3
+  sensitivity: 1.5
+  moveSmoothTime: 0.3
+  moveSmoothTimeCamera: 0.03
 --- !u!1 &8187940147532144386
 GameObject:
   m_ObjectHideFlags: 0
