@@ -10,12 +10,15 @@ public class UfoController : MonoBehaviour
     private Vector3 walkPoint;
     public float walkPointRange, sightRange, attackRange, timeSec;
     private bool playerInSightRange, playerInAttackRange, enemyWalkPointReach;
-    public LayerMask whatIsPlayer, whatIsGround;
+    public static LayerMask whatIsPlayer, whatIsGround;
     private void Awake()
     {
         player = GameObject.Find("Player1").transform;
         agent = GetComponent<NavMeshAgent>();
+        
     }
+
+    
 
 
     // Start is called before the first frame update
@@ -29,6 +32,7 @@ public class UfoController : MonoBehaviour
     void Update()
     {
         DistanceCheck();
+        
     }
     private void Patroling()
     {

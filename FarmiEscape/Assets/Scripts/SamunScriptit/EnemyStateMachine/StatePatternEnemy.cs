@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class StatePatternEnemy : MonoBehaviour
 {
+    public Collider[] colliderList = new Collider[0];
+    public LayerMask playerLayer;
+
     public float searchTurnSpeed;
     public float searchDuration;
     public float sightRange;
     //new
     public float walkPointRange, attackRange, timeSec;
     public Vector3 walkPoint;
-
-
 
     //public Transform[] waypoints; *waypoint*
     public Transform eye;
@@ -27,11 +29,12 @@ public class StatePatternEnemy : MonoBehaviour
 
     private void Awake()
     {
+     
         patrolState = new PatrolState(this);
         alertState = new AlertState(this);
         chaseState = new ChaseState(this);
 
-
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -49,5 +52,11 @@ public class StatePatternEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         currentState.OnTriggerEnter(other);
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(eye.position, sightRange);
     }
 }

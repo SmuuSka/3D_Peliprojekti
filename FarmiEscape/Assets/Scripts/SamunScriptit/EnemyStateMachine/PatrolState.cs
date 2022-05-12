@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PatrolState : IEnemyState
 {
@@ -18,7 +16,7 @@ public class PatrolState : IEnemyState
     public void UpdateState()
     {
         Patrol();
-        //Look();
+        Look();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -44,29 +42,49 @@ public class PatrolState : IEnemyState
 
     }
 
-    //void Look()
-    //{
-    //    Debug.DrawRay(enemy.eye.position, enemy.eye.forward * enemy.sightRange, Color.green);
+    void Look()
+    {
+        Debug.DrawRay(enemy.eye.position, enemy.eye.forward * enemy.sightRange, Color.green);
+
+        
+
+        //RaycastHit hit;
+        //if (Physics.Raycast(enemy.eye.position, enemy.eye.forward, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
+        //{
+        //    Debug.DrawRay(enemy.eye.position, enemy.eye.forward * enemy.sightRange, Color.red);
+        //    enemy.chaseTarget = hit.transform;
+        //    ToChaseState();
+        //}
 
 
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(enemy.eye.position, enemy.eye.forward, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
-    //    {
-    //        enemy.chaseTarget = hit.transform;
-    //        ToChaseState();
-    //    }
-    //}
+
+        //Debug.DrawRay(enemy.eye.position, hit.point, Color.red);
+        //enemy.chaseTarget = hit.transform;
+        //ToChaseState();
+
+        enemy.colliderList = Physics.OverlapSphere(enemy.eye.position, enemy.sightRange, enemy.playerLayer);
+        if (enemy.colliderList.Length > 0)
+        {
+            enemy.chaseTarget = enemy.colliderList[0].gameObject.transform;
+            ToAlertState();
+        }
+        else
+        {
+            return;
+        }
+        
+    }
 
     void Patrol()
     {
-        Debug.Log("next point: " + nextPoint);
+        //Debug.Log("next point: " + nextPoint);
 
         if (nextPoint == Vector3.zero)
         {
             enemy.navMeshAgent.SetDestination(SetNextWalkPos());
-            
+
         }
-        
+
         //enemy.indicator.material.color = Color.green; *indicator*
         //enemy.navMeshAgent.destination = enemy.waypoints[nextWaypoint].position; *waypoint*
         enemy.navMeshAgent.isStopped = false;
@@ -81,7 +99,6 @@ public class PatrolState : IEnemyState
                 timeSec = 0;
                 return;
             }
-            
         }
     }
 
@@ -98,6 +115,8 @@ public class PatrolState : IEnemyState
         nextPoint = enemy.walkPoint;
         return enemy.walkPoint;
     }
+
+
 
 
 }

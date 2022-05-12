@@ -1129,12 +1129,6 @@ MonoBehaviour:
   sightRange: 0
   attackRange: 0
   timeSec: 0
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!195 &131943637
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1426,6 +1420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1edc207a8e430b4cad61189f12ab648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
   searchTurnSpeed: 100
   searchDuration: 4
   sightRange: 10
@@ -1433,7 +1430,7 @@ MonoBehaviour:
   attackRange: 0
   timeSec: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  eye: {fileID: 194677333}
+  eye: {fileID: 1336747394}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
 --- !u!195 &194677331
@@ -1446,7 +1443,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1472,9 +1469,9 @@ CapsuleCollider:
   m_Height: 1.7276434
   m_Direction: 1
   m_Center: {x: 0, y: 0.87061673, z: 0}
---- !u!4 &194677333 stripped
+--- !u!4 &194677334 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8921353867929231636, guid: f00381aec5065654899601de57e3e76a, type: 3}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f00381aec5065654899601de57e3e76a, type: 3}
   m_PrefabInstance: {fileID: 194677328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &204044371
@@ -8722,6 +8719,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65ce21f7189f2b246b52ea4d04a67930, type: 3}
   m_PrefabInstance: {fileID: 1328243362}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1336747393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1336747394}
+  m_Layer: 0
+  m_Name: Raycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1336747394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336747393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.828, z: 0.147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 194677334}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1355970500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15982,12 +16009,6 @@ MonoBehaviour:
   sightRange: 1
   attackRange: 0
   timeSec: 0
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 256
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!33 &924859766849607891
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30397,7 +30418,7 @@ GameObject:
   - component: {fileID: 8180408054413176836}
   m_Layer: 8
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
