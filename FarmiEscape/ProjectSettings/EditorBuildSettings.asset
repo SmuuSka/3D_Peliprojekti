@@ -12,6 +12,27 @@ EditorBuildSettings:
     path: Assets/Scenes/JokenScene/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/JokenScene/Pic1.unity
+    guid: f44d771ac529efd4b9cb57eb29bf7436
+  - enabled: 1
+    path: Assets/Scenes/JokenScene/Pic2.unity
+    guid: c3af587f88b939e448f794bb27c8ebad
+  - enabled: 1
+    path: Assets/Scenes/JokenScene/Pic3.unity
+    guid: 39dca71270fb97849bbeca28510323ff
+  - enabled: 1
+    path: Assets/Scenes/JokenScene/Pic4.unity
+    guid: 8fc5d268a67cbfe4f85061ac268d197e
+  - enabled: 1
+    path: Assets/Scenes/JokenScene/Pic5.unity
+    guid: 59ba3e35210843e4fb2105aec2b2b6cd
+  - enabled: 1
     path: Assets/Scenes/JokenScene/JokenScene.unity
     guid: ee12677bb6e4caa4fb404a41139a0920
+  - enabled: 1
+    path: Assets/Scenes/JokenScene/GetCaught.unity
+    guid: 69d7b9347b8e2cf4e9ecf4e4350ec7aa
+  - enabled: 1
+    path: Assets/Scenes/JokenScene/Escape.unity
+    guid: c44f81c6b2170214998ffcd153709d83
   m_configObjects: {}
