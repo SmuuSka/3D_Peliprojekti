@@ -39,7 +39,7 @@ public class MoveUserInput : MonoBehaviour
 
         if (lockCursor)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
