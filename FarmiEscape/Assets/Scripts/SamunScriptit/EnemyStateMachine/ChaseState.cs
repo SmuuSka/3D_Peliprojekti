@@ -63,7 +63,7 @@ public class ChaseState : IEnemyState
         if (Vector3.Distance(enemy.navMeshAgent.gameObject.transform.position, enemy.chaseTarget.position) < 1f)
         {
             enemy.navMeshAgent.isStopped = true;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(7);
 
         }
     }

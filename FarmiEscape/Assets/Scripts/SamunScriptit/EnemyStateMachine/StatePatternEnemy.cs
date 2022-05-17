@@ -6,7 +6,9 @@ using UnityEngine.AI;
 
 public class StatePatternEnemy : MonoBehaviour
 {
+    
     public Collider[] colliderList = new Collider[0];
+    public Collider[] chaseList = new Collider[0];
     public LayerMask playerLayer;
 
     public float searchTurnSpeed;
@@ -56,7 +58,8 @@ public class StatePatternEnemy : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+       // Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(eye.position, sightRange);
+        Gizmos.DrawWireSphere(eye.position, sightRange);
     }
 }

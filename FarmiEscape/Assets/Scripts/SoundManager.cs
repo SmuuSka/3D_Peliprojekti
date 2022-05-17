@@ -22,6 +22,10 @@ using UnityEngine.UI;public class SoundManager : MonoBehaviour
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
     }
+    private void Start()
+    {
+        volumeSlider.value = 0.5f;
+    }
     private void Update()
     {
         {
