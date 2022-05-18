@@ -41361,7 +41361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b660d3aff52ae4ea3c9feae42cb60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 3.2
   sensitivity: 1.5
   moveSmoothTime: 0.3
   moveSmoothTimeCamera: 0.03
