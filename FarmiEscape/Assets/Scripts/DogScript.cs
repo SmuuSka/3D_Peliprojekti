@@ -15,7 +15,7 @@ public class DogScript : MonoBehaviour
     
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        
 
 
     }
@@ -26,7 +26,14 @@ public class DogScript : MonoBehaviour
 
         Debug.Log("SpawnPoint: " + spawnPoint);
 
-        agent.transform.position = dogSpawnPoints[spawnPoint].gameObject.transform.position;
+        transform.position = dogSpawnPoints[spawnPoint].gameObject.transform.position;
+        gameObject.AddComponent<NavMeshAgent>(); 
+        agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = 1.5f;
+        agent.radius = 0.3f;
+        agent.height = 0.5f;
+        agent.baseOffset = 0.03f;
+
     }
 
 
