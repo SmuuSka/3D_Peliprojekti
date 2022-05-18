@@ -19,8 +19,23 @@ public class UFOMovement : MonoBehaviour
         speed = minSpeed;
         enemy = GameObject.FindObjectOfType<StatePatternEnemy>();
     }
+
+    private void Update()
+    {
+        if (enemy.playerRefe.enemyIsChaseMode == true)
+        {
+            HoverOverPlayer();
+        }
+        else
+        {
+            Patrol();
+        }
+    }
+
+
     public void Patrol()
     {
+        LightOff();
         Transform wp = waypoints[currentWaypointIndex];
         //jos et�isyys pienempi kuin 0.01f, niin asetetaan uusi waypoint
         if (Vector3.Distance(transform.position, wp.position) < 0.01f)
@@ -54,7 +69,7 @@ public class UFOMovement : MonoBehaviour
     public void HoverOverPlayer()
     {
         var _speed = 25;
-
+        LightOn();
         Vector3 playerPos = new Vector3(playerTransform.position.x, playerTransform.position.y + hoverHeight, playerTransform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, playerPos, _speed * Time.deltaTime);
 

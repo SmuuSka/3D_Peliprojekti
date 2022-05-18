@@ -13,7 +13,7 @@ public class ChaseState : IEnemyState
 
     public void UpdateState()
     {
-        enemy.enemyState = true;
+       
         Chase();
         Look();
     }
@@ -49,12 +49,14 @@ public class ChaseState : IEnemyState
         RaycastHit hit;
         if (Physics.Raycast(enemy.eye.position, enemyToTarget, out hit, enemy.sightRange * 1.5f) && hit.collider.CompareTag("Player"))
         {
-   
+
+            enemy.playerRefe.enemyIsChaseMode = true;
             enemy.chaseTarget = hit.transform;
         }
         else
         {
-            enemy.enemyState = false;
+
+            enemy.playerRefe.enemyIsChaseMode = false;
             ToPatrolState();
         }
 

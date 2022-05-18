@@ -6,12 +6,13 @@ public class StatePatternEnemy : MonoBehaviour
 {
 
     private UFOMovement uFOMovement;
+    public MoveUserInput playerRefe;
 
     public Collider[] colliderList = new Collider[0];
     public Collider[] chaseList = new Collider[0];
     public LayerMask playerLayer;
     public static bool withDog;
-    public bool enemyState;
+
 
     public float searchTurnSpeed;
     public float searchDuration;
@@ -43,25 +44,15 @@ public class StatePatternEnemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
-    {
-        currentState = patrolState;
-    }
-
     private void Update()
     {
         currentState.UpdateState();
+        Debug.Log("Status: " + playerRefe.enemyIsChaseMode);
+    }
 
-        if (enemyState)
-        {
-            uFOMovement.HoverOverPlayer();
-            uFOMovement.LightOn();
-        }
-        else
-        {
-            uFOMovement.LightOff();
-            uFOMovement.Patrol();
-        }
+    private void Start()
+    {
+        currentState = patrolState;
     }
 
     private void OnTriggerEnter(Collider other)
