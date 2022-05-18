@@ -34,6 +34,7 @@ public class MoveUserInput : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerCam = GetComponentInChildren<Camera>();
         moveLogic = GetComponent<MoveScripts>();
+        Cursor.visible = false;
 
     }
 
@@ -43,7 +44,7 @@ public class MoveUserInput : MonoBehaviour
         if (lockCursor)
         {
             //Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            
         }
 
         HandleMovement();

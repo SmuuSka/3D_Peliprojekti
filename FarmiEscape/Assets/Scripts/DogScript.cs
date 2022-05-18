@@ -61,7 +61,7 @@ public class DogScript : MonoBehaviour
             else
             {
                 dogAudioSource.volume = 1;
-                dogAudioSource.maxDistance = 6;
+                dogAudioSource.maxDistance = 4;
             }
             
         }
