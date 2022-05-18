@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 
 public class StatePatternEnemy : MonoBehaviour
 {
-    
+
+    private UFOMovement uFOMovement;
+
     public Collider[] colliderList = new Collider[0];
     public Collider[] chaseList = new Collider[0];
     public LayerMask playerLayer;
     public static bool withDog;
+    public bool enemyState;
 
     public float searchTurnSpeed;
     public float searchDuration;
@@ -32,12 +33,13 @@ public class StatePatternEnemy : MonoBehaviour
 
     private void Awake()
     {
-     
+
+
         patrolState = new PatrolState(this);
         alertState = new AlertState(this);
         chaseState = new ChaseState(this);
 
-        
+        uFOMovement = GameObject.Find("UFOS").transform.GetChild(2).GetComponent<UFOMovement>();
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -49,7 +51,17 @@ public class StatePatternEnemy : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState();
-        Debug.Log("Current State: " + currentState);
+
+        if (enemyState)
+        {
+            uFOMovement.HoverOverPlayer();
+            uFOMovement.LightOn();
+        }
+        else
+        {
+            uFOMovement.LightOff();
+            uFOMovement.Patrol();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,7 +71,7 @@ public class StatePatternEnemy : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-       // Gizmos.color = Color.yellow;
+        // Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(eye.position, sightRange);
         Gizmos.DrawWireSphere(eye.position, sightRange);
     }

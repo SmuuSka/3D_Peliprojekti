@@ -3,15 +3,30 @@ using UnityEngine.AI;
 
 public class DogScript : MonoBehaviour
 {
+    [SerializeField] private Transform[] dogSpawnPoints = new Transform[0];
+    [SerializeField] GameObject dogPanel;
+    [SerializeField] AudioSource dogAudioSource;
+
     public Transform player;
     float distanceToPlayer;
     bool followingPlayer, panelIsActivated;
-    [SerializeField] GameObject dogPanel;
+    
     NavMeshAgent agent;
     
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+
+
+    }
+
+    private void Start()
+    {
+        int spawnPoint = Random.Range(0, dogSpawnPoints.Length);
+
+        Debug.Log("SpawnPoint: " + spawnPoint);
+
+        agent.transform.position = dogSpawnPoints[spawnPoint].gameObject.transform.position;
     }
 
 
@@ -33,9 +48,13 @@ public class DogScript : MonoBehaviour
             {
                 agent.destination = player.position;
                 StatePatternEnemy.withDog = true;
-
-
-                //   agent.SetDestination(new Vector3(player.position.x-1 ,player.position.y, player.position.z-1));
+                dogAudioSource.volume = 0.1f;
+                dogAudioSource.maxDistance = 4;
+            }
+            else
+            {
+                dogAudioSource.volume = 1;
+                dogAudioSource.maxDistance = 6;
             }
             
         }

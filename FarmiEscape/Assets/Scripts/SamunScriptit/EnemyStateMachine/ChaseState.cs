@@ -4,6 +4,7 @@ using UnityEngine;
 public class ChaseState : IEnemyState
 {
     private StatePatternEnemy enemy;
+    
 
     public ChaseState(StatePatternEnemy statePatternEnemy)
     {
@@ -12,6 +13,7 @@ public class ChaseState : IEnemyState
 
     public void UpdateState()
     {
+        enemy.enemyState = true;
         Chase();
         Look();
     }
@@ -38,6 +40,8 @@ public class ChaseState : IEnemyState
 
     void Look()
     {
+        
+
         Vector3 enemyToTarget = enemy.chaseTarget.position - enemy.eye.position;
 
         Debug.DrawRay(enemy.eye.position, enemyToTarget, Color.red);
@@ -45,10 +49,12 @@ public class ChaseState : IEnemyState
         RaycastHit hit;
         if (Physics.Raycast(enemy.eye.position, enemyToTarget, out hit, enemy.sightRange * 1.5f) && hit.collider.CompareTag("Player"))
         {
+   
             enemy.chaseTarget = hit.transform;
         }
         else
         {
+            enemy.enemyState = false;
             ToPatrolState();
         }
 
@@ -56,6 +62,7 @@ public class ChaseState : IEnemyState
 
     void Chase()
     {
+        
         //enemy.indicator.material.color = Color.red; *indicator*
         enemy.navMeshAgent.destination = enemy.chaseTarget.position;
         enemy.navMeshAgent.isStopped = false;

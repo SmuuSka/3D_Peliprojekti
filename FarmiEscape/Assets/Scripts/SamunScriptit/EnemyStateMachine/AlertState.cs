@@ -37,6 +37,7 @@ public class AlertState : IEnemyState
     {
         searchTimer = 0;
         enemy.currentState = enemy.patrolState;
+        
     }
 
     void Look()

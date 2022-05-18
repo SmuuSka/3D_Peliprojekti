@@ -4,6 +4,7 @@ using UnityEngine;
 public class UFOMovement : MonoBehaviour
 {
     [SerializeField] Transform playerTransform;
+    [SerializeField] Light enemyChaseLight;
     public Transform[] waypoints;
     public float minSpeed;
     public float maxSpeed;
@@ -11,12 +12,14 @@ public class UFOMovement : MonoBehaviour
 
     private int currentWaypointIndex = 1;//menee alussa t�t� kohti
     private float speed;
+    public int hoverHeight = 15;
 
     private void Start()
     {
         speed = minSpeed;
+        enemy = GameObject.FindObjectOfType<StatePatternEnemy>();
     }
-    private void Patrol()
+    public void Patrol()
     {
         Transform wp = waypoints[currentWaypointIndex];
         //jos et�isyys pienempi kuin 0.01f, niin asetetaan uusi waypoint
@@ -35,19 +38,27 @@ public class UFOMovement : MonoBehaviour
         }
     }
 
-    private void Update()
-    
+    public void LightOn()
     {
-        if(enemy.currentState == enemy.chaseState)
-        {
-            transform.position = playerTransform.position;
+        enemyChaseLight.gameObject.SetActive(true);
+    }
+    public void LightOff()
+    {
 
-        }
-        else
-        {
-            Patrol();
-        }
-        
+        enemyChaseLight.gameObject.SetActive(false);
+
+    }
+
+
+
+    public void HoverOverPlayer()
+    {
+        var _speed = 25;
+
+        Vector3 playerPos = new Vector3(playerTransform.position.x, playerTransform.position.y + hoverHeight, playerTransform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, playerPos, _speed * Time.deltaTime);
+
+        //transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + hoverHeight, playerTransform.position.z);
     }
 
 
