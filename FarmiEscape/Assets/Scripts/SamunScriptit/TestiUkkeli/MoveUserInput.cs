@@ -44,6 +44,10 @@ public class MoveUserInput : MonoBehaviour
         }
 
         HandleMovement();
+        if(Time.deltaTime == 0)
+        {
+            return;
+        }
         HandleRotation();
 
     }

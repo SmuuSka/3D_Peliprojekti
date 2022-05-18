@@ -20,7 +20,21 @@ public class MainMenu : MonoBehaviour
    }
     public void BackToMenu ()
     {
+        StatePatternEnemy.withDog = false;
         SceneManager.LoadScene(0);
+    }
+    private void Update()
+    {
+        var scene = SceneManager.GetActiveScene().buildIndex;
+        if(scene != 6)
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
+        
     }
 
 }

@@ -10,6 +10,7 @@ public class StatePatternEnemy : MonoBehaviour
     public Collider[] colliderList = new Collider[0];
     public Collider[] chaseList = new Collider[0];
     public LayerMask playerLayer;
+    public static bool withDog;
 
     public float searchTurnSpeed;
     public float searchDuration;

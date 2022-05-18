@@ -5,8 +5,8 @@ public class DogScript : MonoBehaviour
 {
     public Transform player;
     float distanceToPlayer;
-    bool followingPlayer;
-
+    bool followingPlayer, panelIsActivated;
+    [SerializeField] GameObject dogPanel;
     NavMeshAgent agent;
     
     private void Awake()
@@ -19,15 +19,23 @@ public class DogScript : MonoBehaviour
     {
         {
             distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if(distanceToPlayer < 2)
+            if(distanceToPlayer < 2) 
             {
                 followingPlayer = true;
+                if (dogPanel.activeInHierarchy == false && !panelIsActivated) 
+                {
+                    dogPanel.SetActive(true);
+                    panelIsActivated = true;
+                }
+                
             }
             if(followingPlayer)
             {
-                transform.LookAt(player);
-                
-                agent.SetDestination(new Vector3(player.position.x-1 ,player.position.y, player.position.z-1));
+                agent.destination = player.position;
+                StatePatternEnemy.withDog = true;
+
+
+                //   agent.SetDestination(new Vector3(player.position.x-1 ,player.position.y, player.position.z-1));
             }
             
         }
