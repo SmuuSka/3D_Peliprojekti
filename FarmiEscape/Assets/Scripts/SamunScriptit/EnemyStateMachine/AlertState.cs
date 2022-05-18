@@ -44,17 +44,8 @@ public class AlertState : IEnemyState
     {
         Debug.DrawRay(enemy.eye.position, enemy.eye.forward * enemy.sightRange, Color.yellow);
 
-
-        //RaycastHit hit;
-
-        //if (Physics.Raycast(enemy.eye.position, enemy.eye.forward, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
-        //{
-        //    ToChaseState();
-        //    //enemy.chaseTarget = hit.transform;
-
-
-        //}
         enemy.chaseList = Physics.OverlapSphere(enemy.eye.position, enemy.sightRange * 1.5f, enemy.playerLayer);
+        
         if (enemy.chaseList.Length > 0)
         {
             enemy.chaseTarget = enemy.chaseList[0].gameObject.transform;
@@ -65,6 +56,8 @@ public class AlertState : IEnemyState
             ToPatrolState();
             return;
         }
+
+      
 
     }
 

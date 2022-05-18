@@ -50,13 +50,13 @@ public class ChaseState : IEnemyState
         if (Physics.Raycast(enemy.eye.position, enemyToTarget, out hit, enemy.sightRange * 1.5f) && hit.collider.CompareTag("Player"))
         {
 
-            enemy.playerRefe.enemyIsChaseMode = true;
-            enemy.chaseTarget = hit.transform;
+           enemy.isChaseOn = true;
+           enemy.chaseTarget = hit.transform;
         }
         else
         {
 
-            enemy.playerRefe.enemyIsChaseMode = false;
+            enemy.isChaseOn = false;
             ToPatrolState();
         }
 

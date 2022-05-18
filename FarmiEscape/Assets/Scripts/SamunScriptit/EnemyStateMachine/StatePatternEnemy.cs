@@ -12,6 +12,7 @@ public class StatePatternEnemy : MonoBehaviour
     public Collider[] chaseList = new Collider[0];
     public LayerMask playerLayer;
     public static bool withDog;
+    public bool isChaseOn;
 
 
     public float searchTurnSpeed;
@@ -47,7 +48,6 @@ public class StatePatternEnemy : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState();
-        Debug.Log("Status: " + playerRefe.enemyIsChaseMode);
     }
 
     private void Start()

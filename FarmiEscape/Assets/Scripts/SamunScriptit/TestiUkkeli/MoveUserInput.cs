@@ -8,8 +8,6 @@ public class MoveUserInput : MonoBehaviour
     [SerializeField] [Range(0f, 0.5f)] float moveSmoothTime = 0.3f;
     [SerializeField] [Range(0f, 0.5f)] float moveSmoothTimeCamera = 0.03f;
 
-    public bool enemyIsChaseMode;
-
     private Camera playerCam;
 
     Vector2 currentDir = Vector2.zero;
