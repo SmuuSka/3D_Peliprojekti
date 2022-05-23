@@ -16620,7 +16620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d64bd3e3df11364499f023d4f7a01850, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.56
+      value: 63.507
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d64bd3e3df11364499f023d4f7a01850, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16666,6 +16666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: alienAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: d64bd3e3df11364499f023d4f7a01850, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0a88945958eb28f4991237ad1b9167a3, type: 2}
     - target: {fileID: 6934146961906175275, guid: d64bd3e3df11364499f023d4f7a01850, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16734,6 +16738,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1436248143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436248139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1edc207a8e430b4cad61189f12ab648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRefe: {fileID: 0}
+  colliderList: []
+  chaseList: []
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  searchTurnSpeed: 0
+  searchDuration: 0
+  sightRange: 0
+  walkPointRange: 0
+  attackRange: 0
+  timeSec: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  eye: {fileID: 0}
+  chaseTarget: {fileID: 0}
+  navMeshAgent: {fileID: 0}
 --- !u!1 &1445593520 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1018664272722485354, guid: 31f2dcc5e2c90c84ca4ee202023376ed, type: 3}
